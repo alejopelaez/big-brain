@@ -274,7 +274,7 @@ pub fn thinker_component_detach_system(
 pub fn actor_gone_cleanup(
     mut cmd: Commands,
     actors: Query<&ThinkerBuilder>,
-    q: Query<(Entity, &Actor)>,
+    q: Query<(Entity, &Actor), Without<ChildOf>>,
 ) {
     for (child, Actor(actor)) in q.iter() {
         if actors.get(*actor).is_err() {
